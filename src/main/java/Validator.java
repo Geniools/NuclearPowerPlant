@@ -1,0 +1,29 @@
+/**
+ * The type Validator. Used for the Nuclear Power Plant system.
+ * Used for different validation methods inside the system.
+ * Also contains methods for common used calculations within the system.
+ */
+public abstract class Validator {
+	// The freezing temperature for Kelvin (0 in Celsius)
+	public static final double FREEZING_TEMPERATURE_KELVIN = 273.15;
+
+	/**
+	 * Checks a number to be positive.
+	 *
+	 * @param nr The nr to be validated
+	 * @return True if the number is positive, false otherwise
+	 */
+	public static boolean isPositive(double nr) {
+		return nr > 0;
+	}
+
+	/**
+	 * Checks the temperature to be above freezing level.
+	 *
+	 * @param temperature The temperature in Kelvin.
+	 * @return True if above freezing level, false otherwise
+	 */
+	public static boolean isAboveFreezingTemperatureKelvin(double temperature) {
+		return temperature > FREEZING_TEMPERATURE_KELVIN;
+	}
+}

@@ -6,13 +6,13 @@ public class PowerPlant {
 	private CoolingSystem coolingSystem;
 
 	public PowerPlant(Generator generator, Reactor reactor, CoolingSystem coolingSystem) {
-		this.generator = generator;
-		this.reactor = reactor;
-		this.coolingSystem = coolingSystem;
+		setGenerator(generator);
+		setReactor(reactor);
+		setCoolingSystem(coolingSystem);
 	}
 
 	public Generator getGenerator() {
-		return generator;
+		return this.generator;
 	}
 
 	public void setGenerator(Generator generator) {
@@ -20,7 +20,7 @@ public class PowerPlant {
 	}
 
 	public Reactor getReactor() {
-		return reactor;
+		return this.reactor;
 	}
 
 	public void setReactor(Reactor reactor) {
@@ -28,14 +28,14 @@ public class PowerPlant {
 	}
 
 	public CoolingSystem getCoolingSystem() {
-		return coolingSystem;
+		return this.coolingSystem;
 	}
 
 	public void setCoolingSystem(CoolingSystem coolingSystem) {
 		this.coolingSystem = coolingSystem;
 	}
 
-	public float run(float temp, Date time){
+	public float run(float temperature, Date time) {
 		return 0;
 	}
 }
