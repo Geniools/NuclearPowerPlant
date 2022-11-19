@@ -1,6 +1,6 @@
 public class Stendaanium extends Core {
 
-	private Stendaanium() {
+	public Stendaanium() {
 		this.THRESHOLD_TEMPERATURE = 334;
 	}
 

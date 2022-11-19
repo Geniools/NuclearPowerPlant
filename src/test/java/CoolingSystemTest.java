@@ -1,8 +1,10 @@
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CoolingSystemTest {
 
-	@org.junit.jupiter.api.Test
+	@Test
 	void setCollingSystem_ThrowsIllegalArgumentException() {
 		assertThrows(IllegalArgumentException.class,() ->
 			new CoolingSystem(-1),

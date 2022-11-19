@@ -1,25 +1,25 @@
 public class SplitResult {
-	private double residualHeat;
-	private double heatAmount;
+    private double residualHeat;
+    private double heatAmount; // steam
 
-	public SplitResult(double residualHeat, double heatAmount) {
-		this.residualHeat = residualHeat;
-		this.heatAmount = heatAmount;
-	}
+    public SplitResult(double residualHeat, double heatAmount) {
+        this.residualHeat = residualHeat;
+        this.heatAmount = heatAmount; // steam
+    }
 
-	private double getResidualHeat() {
-		return this.residualHeat;
-	}
+    public double getResidualHeat() {
+        return Validator.getFormattedDouble(this.residualHeat);
+    }
 
-	private void setResidualHeat(double residualHeat) {
-		this.residualHeat = residualHeat;
-	}
+    public void setResidualHeat(double residualHeat) {
+        this.residualHeat = residualHeat;
+    }
 
-	private double getHeatAmount() {
-		return this.heatAmount;
-	}
+    public double getHeatAmount() {
+        return Validator.getFormattedDouble(this.heatAmount);
+    }
 
-	private void setHeatAmount(double heatAmount) {
-		this.heatAmount = heatAmount;
-	}
+    public void setHeatAmount(double heatAmount) {
+        this.heatAmount = heatAmount;
+    }
 }
