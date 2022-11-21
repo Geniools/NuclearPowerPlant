@@ -15,7 +15,7 @@ public class Generator {
 		return energy;
 	}
 
-	public void addEnergy(double amount) {
+	private void addEnergy(double amount) {
 		this.totalAmountEnergy += amount;
 	}
 

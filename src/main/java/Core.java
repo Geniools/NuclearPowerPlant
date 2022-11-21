@@ -7,6 +7,10 @@ public abstract class Core {
 		this.residualPercentage = Core.RESIDUAL_PERCENTAGE;
 	}
 
+	public double getResidualPercentage() {
+		return Validator.getFormattedDouble(this.residualPercentage);
+	}
+
 	/**
 	 * The "split" inside a core to produce heat and steam
 	 * Will calculate the results differently based on the core type
