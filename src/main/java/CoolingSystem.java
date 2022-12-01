@@ -1,4 +1,4 @@
-public class CoolingSystem {
+public class CoolingSystem implements ControlStatus {
 	private double waterTemp;
 
 	public CoolingSystem(double waterTemp) {
@@ -25,5 +25,18 @@ public class CoolingSystem {
 		this.waterTemp = waterTemp;
 
 		return waterTemp;
+	}
+
+	@Override
+	public Status getStatus() {
+		if (this.getWaterTemp() > 80 && this.getWaterTemp() < 90) {
+			return Status.ATTENTION;
+		}
+
+		if (this.getWaterTemp() > 90) {
+			return Status.UNSTABLE;
+		}
+
+		return Status.STABLE;
 	}
 }

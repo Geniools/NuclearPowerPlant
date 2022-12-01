@@ -1,14 +1,19 @@
+import java.util.HashSet;
 import java.util.Set;
 
-public class Reactor {
+public class Reactor implements ControlStatus {
 	private Set<Core> cores;
 
 	public Reactor(Set<Core> cores) {
 		this.cores = cores;
 	}
 
+	public Reactor() {
+		this.cores = new HashSet<>();
+	}
+
 	public Set<Core> getCores() {
-		return cores;
+		return this.cores;
 	}
 
 	public void setCores(Set<Core> cores) {
@@ -22,5 +27,16 @@ public class Reactor {
 	 */
 	public void addCore(Core core) {
 		this.cores.add(core);
+	}
+
+	@Override
+	public Status getStatus() {
+		for (Core core : this.getCores()) {
+			if (core.getResidualPercentage() <= 0.2) {
+				return Status.ATTENTION;
+			}
+		}
+
+		return Status.STABLE;
 	}
 }

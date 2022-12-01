@@ -1,4 +1,4 @@
-public class Generator {
+public class Generator implements ControlStatus {
 	private double totalAmountEnergy;
 
 	/**
@@ -21,5 +21,14 @@ public class Generator {
 
 	public double getTotalAmountEnergy() {
 		return this.totalAmountEnergy;
+	}
+
+	@Override
+	public Status getStatus() {
+		if (this.getTotalAmountEnergy() > 500) { // Or 500kWh is 500000Wh ???
+			return Status.UNSTABLE;
+		}
+
+		return Status.STABLE;
 	}
 }

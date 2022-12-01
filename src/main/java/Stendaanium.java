@@ -1,13 +1,15 @@
 public class Stendaanium extends Core {
 
 	public Stendaanium() {
-		this.THRESHOLD_TEMPERATURE = 334;
+		super(334);
+//		this.THRESHOLD_TEMPERATURE = 334;
 	}
 
 	@Override
 	public SplitResult split(double temperature, double time) {
-		super.split(temperature, time);
-		
+		// First the input is validated
+		this.validateInputParam(temperature, time);
+
 		// Updating the residual percentage
 		double residualPercentageLost = this.residualPercentage - ((0.00008 * temperature * time) + 0.0003);
 

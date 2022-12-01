@@ -1,14 +1,16 @@
 public abstract class Core {
-	private static final int RESIDUAL_PERCENTAGE = 100;
-	protected int THRESHOLD_TEMPERATURE;
+	public static final int DEFAULT_RESIDUAL_PERCENTAGE = 100;
+	protected final int THRESHOLD_TEMPERATURE;
 	protected double residualPercentage;
 
-	public Core() {
-		this.residualPercentage = Core.RESIDUAL_PERCENTAGE;
+	public Core(int thresholdTemperature) {
+		THRESHOLD_TEMPERATURE = thresholdTemperature;
+		this.residualPercentage = Core.DEFAULT_RESIDUAL_PERCENTAGE;
 	}
 
 	public double getResidualPercentage() {
-		return Validator.getFormattedDouble(this.residualPercentage);
+//		return Validator.getFormattedDouble(this.residualPercentage);
+		return this.residualPercentage;
 	}
 
 	/**
@@ -19,7 +21,9 @@ public abstract class Core {
 	 * @param time        The time the temperature passed was maintained
 	 * @return The heat and steam in the SplitResult class
 	 */
-	public SplitResult split(double temperature, double time) {
+	public abstract SplitResult split(double temperature, double time);
+
+	protected void validateInputParam(double temperature, double time) {
 		// Temperature cannot be below freezing point (or else we make another Chernobyl)
 		if (!Validator.isAboveFreezingTemperatureKelvin(temperature)) {
 			throw new IllegalArgumentException("Temperature cannot be below the freezing point!");
@@ -28,8 +32,6 @@ public abstract class Core {
 		if (!Validator.isPositive(time)) {
 			throw new IllegalArgumentException("Time cannot be negative!");
 		}
-		// Just to avoid errors...
-		return null;
 	}
 
 	@Override
