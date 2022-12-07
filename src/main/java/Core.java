@@ -21,16 +21,16 @@ public abstract class Core {
 	 * @param time        The time the temperature passed was maintained
 	 * @return The heat and steam in the SplitResult class
 	 */
-	public abstract SplitResult split(double temperature, double time);
+	public abstract SplitResult split(double temperature, double time) throws MeltdownException; // DO WE HAVE TO ADD "throws Exception" to an abstract method???
 
-	protected void validateInputParam(double temperature, double time) {
-		// Temperature cannot be below freezing point (or else we make another Chernobyl)
-		if (!Validator.isAboveFreezingTemperatureKelvin(temperature)) {
-			throw new IllegalArgumentException("Temperature cannot be below the freezing point!");
-		}
-		// Time obviously cannot be negative
+	protected void validateInputParam(double temperature, double time) throws MeltdownException {
+		// Temperature cannot be below freezing point (or else we make another Chernobyl) (NOT in the assignment)
+//		if (!Validator.isAboveFreezingTemperatureKelvin(temperature)) {
+//			throw new MeltdownException("Temperature cannot be below the freezing point!");
+//		}
+		// Time obviously cannot be negative (NOT in the assignment)
 		if (!Validator.isPositive(time)) {
-			throw new IllegalArgumentException("Time cannot be negative!");
+			throw new MeltdownException("Time cannot be negative!");
 		}
 	}
 
@@ -40,3 +40,4 @@ public abstract class Core {
 		return this.getClass().getSimpleName();
 	}
 }
+

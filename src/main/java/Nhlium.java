@@ -6,13 +6,23 @@ public class Nhlium extends Core {
 	}
 
 	@Override
-	public SplitResult split(double temperature, double time) {
+	public SplitResult split(double temperature, double time) throws MeltdownException {
 		// First input is validated
 		this.validateInputParam(temperature, time);
+		// Second validate the core specific stuff
+		// Just because the assignment was like this (it does not make sense in real life)
+		if (Validator.isAboveValue(temperature, 100) && Validator.isOverTimeValue(time, 60)) {
+			throw new MeltdownException("The temperature is above 100 Kelvin for more than 60 seconds!");
+		}
 
 		// Updating the residual percentage
-		double residualPercentageLost = this.residualPercentage - (time * 0.08); // If Java knows math it will multiply first
-		this.residualPercentage = Validator.isPositive(residualPercentageLost) ? residualPercentageLost : 0;
+		double newResidualPercentage = this.residualPercentage - (time * 0.08);
+//		this.residualPercentage = Validator.isPositive(newResidualPercentage) ? newResidualPercentage : 0;
+		if (Validator.isBelowValue(newResidualPercentage, 0.1)) {
+			throw new MeltdownException("The residual percentage went too low!");
+		} else {
+			this.residualPercentage = newResidualPercentage;
+		}
 
 		// Calculating the steam and residual heat
 		double steam;
