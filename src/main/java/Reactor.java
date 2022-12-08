@@ -20,6 +20,21 @@ public class Reactor implements ControlStatus {
 		this.cores = cores;
 	}
 
+	public SplitResult run(double temperature, double time) throws MeltdownException {
+		// This method can be used in the power plant for getting the total steam and residual heat generator
+		// It might be better codewise to
+		double totalSteam = 0;
+		double totalResidualHeat = 0;
+
+		for (Core core : this.getCores()) {
+			SplitResult splitResult = core.split(temperature, time);
+			totalSteam += splitResult.getHeatAmount();
+			totalResidualHeat += splitResult.getResidualHeat();
+		}
+
+		return new SplitResult(totalSteam, totalResidualHeat);
+	}
+
 	/**
 	 * Adding another Core to the Reactor
 	 *

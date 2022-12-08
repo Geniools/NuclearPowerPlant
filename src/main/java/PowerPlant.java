@@ -69,7 +69,9 @@ public class PowerPlant {
 			}
 		} catch (MeltdownException meltdownException) {
 			// Here smth should happen (like stop the power plant or smth)
+			System.out.println(meltdownException.getMessage());
 			System.out.println("CHERNOBYL in EMMEN!!!");
+			return -1;
 		}
 
 		// Generating energy

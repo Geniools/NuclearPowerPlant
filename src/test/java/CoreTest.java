@@ -21,7 +21,7 @@ class CoreTest {
 	}
 
 	@Test
-	void splitTestResultNhlium() {
+	void splitTestResultNhlium() throws MeltdownException {
 		// Below 328 Kelvin
 		assertEquals(18, core1.split(327, 2).getResidualHeat(), "Residual heat amount is not correct!");
 		assertEquals(99.84, core1.getResidualPercentage(), "Residual percentage is not correct!");
@@ -36,7 +36,7 @@ class CoreTest {
 	}
 
 	@Test
-	void splitTestResultStendaanium() {
+	void splitTestResultStendaanium() throws MeltdownException {
 		// Above or equal 334 Kelvin
 		assertEquals(0, core2.split(334, 2).getResidualHeat(), "Residual heat amount is not correct!");
 		assertEquals(99.9463, core2.getResidualPercentage(), "Residual percentage is not correct!");
